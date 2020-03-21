@@ -95,3 +95,51 @@ class Car(DeterministicCar):
         self.velocity = np.matmul(rotation_matrix, self.velocity)
 
 
+class MatrixCar(DeterministicCar):
+
+    def move(self, dt):
+        self.state = np.matmul(self.get_transformation_matrix(dt), self.state)
+
+        self.states = np.append(self.states, [self.state], axis=0)
+
+    def turn(self, dtheta):
+        self.state = np.matmul(self.get_turn_matrix(dtheta), self.state)
+
+    def __init__(self, state=None) -> None:
+        super().__init__()
+        if state is None:
+            self.state = np.zeros((6, 1))
+        else:
+            self.state = np.asarray(state)
+            self.state = self.state.reshape((6, 1))
+
+        self.states = np.reshape(self.state, (1, *self.state.shape))
+
+    def get_transformation_matrix(self, dt):
+        return np.array([
+            [1, dt, .5 * dt ** 2, 0, 0, 0],
+            [0, 1, dt, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 1, dt, .5 * dt ** 2],
+            [0, 0, 0, 0, 1, dt],
+            [0, 0, 0, 0, 0, 1],
+        ])
+
+    def get_turn_matrix(self, dangle):
+        dangle = -np.deg2rad(dangle)
+
+        c, s = np.cos(dangle), np.sin(dangle)
+        return np.array([
+            [1, 0, 0, 0, 0, 0],
+            [0, c, 0, 0, -s, 0],
+            [0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0],
+            [0, s, 0, 0, c, 0],
+            [0, 0, 0, 0, 0, 1]
+        ])
+
+    def display_world(self):
+        self._draw_world(self.states[:, 0, 0], self.states[:, 3, 0], self.states[-1, 1, 0],
+                         self.states[-1, 4, 0])
+
+
