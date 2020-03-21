@@ -143,3 +143,18 @@ class MatrixCar(DeterministicCar):
                          self.states[-1, 4, 0])
 
 
+if __name__ == '__main__':
+    car = Car(velocity=[1, 1])
+    car2 = MatrixCar(state=[0, 1, 0, 0, 1, 0])
+
+    cars = [car, car2]
+
+    for i in range(100):
+        for c in cars:
+            c.move(1)
+            c.turn(5)
+
+    for c in cars:
+        c.display_world()
+
+    plt.show()
