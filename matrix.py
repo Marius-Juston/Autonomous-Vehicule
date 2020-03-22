@@ -1,7 +1,7 @@
 import numbers
 
 
-def zeroes(height, width):
+def zeroes(height: int, width: int):
     """
     Creates a matrix of zeroes.
     """
@@ -9,7 +9,7 @@ def zeroes(height, width):
     return Matrix(g)
 
 
-def identity(n):
+def identity(n: int):
     """
     Creates a n x n identity matrix.
     """
@@ -17,6 +17,10 @@ def identity(n):
     for i in range(n):
         I.g[i][i] = 1.0
     return I
+
+
+def dot_product(vector_a: iter, vector_b: iter) -> float:
+    return sum(a * b for a, b in zip(vector_a, vector_b))
 
 
 class Matrix(object):
@@ -88,7 +92,7 @@ class Matrix(object):
     #
     # Begin Operator Overloading
     ############################
-    def __getitem__(self, idx):
+    def __getitem__(self, idx: int):
         """
         Defines the behavior of using square brackets [] on instances
         of this class.
@@ -146,17 +150,14 @@ class Matrix(object):
             #
         return Matrix([[a - b for a, b in zip(ra, rb)] for ra, rb in zip(self, other)])
 
-    def __dot_product(self, vectorA, vectorB):
-        return sum(a * b for a, b in zip(vectorA, vectorB))
-
     def __mul__(self, other):
         """
         Defines the behavior of * operator (matrix multiplication)
         """
         other = other.T()
-        return Matrix([[self.__dot_product(self[r], other[c]) for c in range(other.h)] for r in range(self.h)])
+        return Matrix([[dot_product(self[r], other[c]) for c in range(other.h)] for r in range(self.h)])
 
-    def __rmul__(self, other):
+    def __rmul__(self, other: float):
         """
         Called when the thing on the left of the * is not a matrix.
 
