@@ -39,17 +39,22 @@ class DeterministicCar(AbstractCar):
         pass
 
     def _draw_world(self, xs, ys, vx, vy):
+        blues = plt.get_cmap('YlOrRd')  # this returns a colormap
+
+        colors = (np.arange(0, len(xs), 1) / (len(xs) - 1))
+        color = blues(colors)  # blues(x) returns a color for each x between 0.0 and 1.0
+
         self.ax.scatter(xs[:-1],
                         ys[:-1],
-                        c=np.linspace(0, 2 * np.pi, xs[:-1].shape[0]),
+                        c=color[:-1],
                         cmap='hsv',
                         s=2 ** 3)
-        # self.ax.scatter(self.positions[-1:, 0], self.positions[-1:, 1], c='red', marker='x', s=2 ** 7)
+
         self.ax.arrow(xs[-1],
                       ys[-1],
                       vx,
                       vy,
-                      color='red',
+                      color=color[-1],
                       width=.25)
 
 
