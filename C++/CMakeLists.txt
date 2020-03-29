@@ -7,3 +7,4 @@ project("C++")
 
 # Include sub-projects.
 add_subdirectory("Example")
+add_subdirectory("MultiDVector")
