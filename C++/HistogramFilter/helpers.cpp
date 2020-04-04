@@ -10,11 +10,6 @@
 	which are written in python.
 */
 
-#include <vector>
-#include <iostream>
-#include <cmath>
-#include <string>
-#include <fstream>
 #include "helpers.h"
 // #include "debugging_helpers.cpp"
 
@@ -32,13 +27,13 @@ using namespace std;
     @return - a new normalized two dimensional grid where the sum of 
     	   all probabilities is equal to one.
 */
-vector< vector<float> > normalize(vector< vector <float> > grid) {
-	
-	vector< vector<float> > newGrid;
+vector<vector<float> > normalize(vector<vector<float> > grid) {
 
-	// todo - your code here
+    vector<vector<float> > newGrid;
 
-	return newGrid;
+    // todo - your code here
+
+    return newGrid;
 }
 
 /**
@@ -74,13 +69,13 @@ vector< vector<float> > normalize(vector< vector <float> > grid) {
     @return - a new normalized two dimensional grid where probability 
     	   has been blurred.
 */
-vector < vector <float> > blur(vector < vector < float> > grid, float blurring) {
+vector<vector<float> > blur(vector<vector<float> > grid, float blurring) {
 
-	vector < vector <float> > newGrid;
-	
-	// your code here
+    vector<vector<float> > newGrid;
 
-	return normalize(newGrid);
+    // your code here
+
+    return normalize(newGrid);
 }
 
 /** -----------------------------------------------
@@ -104,33 +99,33 @@ vector < vector <float> > blur(vector < vector < float> > grid, float blurring) 
     @return - A boolean (True or False) indicating whether
     these grids are (True) or are not (False) equal.
 */
-bool close_enough(vector < vector <float> > g1, vector < vector <float> > g2) {
-	int i, j;
-	float v1, v2;
-	if (g1.size() != g2.size()) {
-		return false;
-	}
+bool close_enough(vector<vector<float> > g1, vector<vector<float> > g2) {
+    int i, j;
+    float v1, v2;
+    if (g1.size() != g2.size()) {
+        return false;
+    }
 
-	if (g1[0].size() != g2[0].size()) {
-		return false;
-	}
-	for (i=0; i<g1.size(); i++) {
-		for (j=0; j<g1[0].size(); j++) {
-			v1 = g1[i][j];
-			v2 = g2[i][j];
-			if (abs(v2-v1) > 0.0001 ) {
-				return false;
-			}
-		}
-	}
-	return true;
+    if (g1[0].size() != g2[0].size()) {
+        return false;
+    }
+    for (i = 0; i < g1.size(); i++) {
+        for (j = 0; j < g1[0].size(); j++) {
+            v1 = g1[i][j];
+            v2 = g2[i][j];
+            if (abs(v2 - v1) > 0.0001) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
-bool close_enough(float v1, float v2) { 
-	if (abs(v2-v1) > 0.0001 ) {
-		return false;
-	} 
-	return true;
+bool close_enough(float v1, float v2) {
+    if (abs(v2 - v1) > 0.0001) {
+        return false;
+    }
+    return true;
 }
 
 /**
@@ -141,23 +136,23 @@ bool close_enough(float v1, float v2) {
     @return - A row of chars, each of which represents the
     color of a cell in a grid world.
 */
-vector <char> read_line(string s) {
-	vector <char> row;
+vector<char> read_line(string s) {
+    vector<char> row;
 
-	size_t pos = 0;
-	string token;
-	string delimiter = " ";
-	char cell;
+    size_t pos = 0;
+    string token;
+    string delimiter = " ";
+    char cell;
 
-	while ((pos = s.find(delimiter)) != std::string::npos) {
-		token = s.substr(0, pos);
-		s.erase(0, pos + delimiter.length());
+    while ((pos = s.find(delimiter)) != std::string::npos) {
+        token = s.substr(0, pos);
+        s.erase(0, pos + delimiter.length());
 
-		cell = token.at(0);
-		row.push_back(cell);
-	}
+        cell = token.at(0);
+        row.push_back(cell);
+    }
 
-	return row;
+    return row;
 }
 
 /**
@@ -167,22 +162,22 @@ vector <char> read_line(string s) {
 
     @return - A grid of chars representing a map.
 */
-vector < vector <char> > read_map(string file_name) {
-	ifstream infile(file_name);
-	vector < vector <char> > map;
-	if (infile.is_open()) {
+vector<vector<char> > read_map(string file_name) {
+    ifstream infile(file_name);
+    vector<vector<char> > map;
+    if (infile.is_open()) {
 
-		char color;
-		vector <char> row;
-		
-		string line;
+        char color;
+        vector<char> row;
 
-		while (std::getline(infile, line)) {
-			row = read_line(line);
-			map.push_back(row);
-		}
-	}
-	return map;
+        string line;
+
+        while (std::getline(infile, line)) {
+            row = read_line(line);
+            map.push_back(row);
+        }
+    }
+    return map;
 }
 
 /**
@@ -201,19 +196,19 @@ vector < vector <char> > read_map(string file_name) {
 
     @return a grid of zeros (floats)
 */
-vector < vector <float> > zeros(int height, int width) {
-	int i, j;
-	vector < vector <float> > newGrid;
-	vector <float> newRow;
+vector<vector<float> > zeros(int height, int width) {
+    int i, j;
+    vector<vector<float> > newGrid;
+    vector<float> newRow;
 
-	for (i=0; i<height; i++) {
-		newRow.clear();
-		for (j=0; j<width; j++) {
-			newRow.push_back(0.0);
-		}
-		newGrid.push_back(newRow);
-	}
-	return newGrid;
+    for (i = 0; i < height; i++) {
+        newRow.clear();
+        for (j = 0; j < width; j++) {
+            newRow.push_back(0.0);
+        }
+        newGrid.push_back(newRow);
+    }
+    return newGrid;
 }
 
 // int main() {

@@ -1,6 +1,9 @@
 #ifndef TESTS_H
 #define TESTS_H
 
+#include <iostream>
+#include "simulate.h"
+
 // Test for implementation of correct normalize() function
 bool test_normalize();
 

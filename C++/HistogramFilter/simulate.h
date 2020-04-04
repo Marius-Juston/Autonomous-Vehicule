@@ -2,25 +2,28 @@
 #define SIMULATE_H
 
 #include <vector>
+#include <algorithm>
+#include "localizer.h"
 
 class Simulation {
-	
+
 private:
-	std::vector <char> get_colors();
+    std::vector<char> get_colors();
 
-public: 
-	std::vector < std::vector <char> > grid;
-	std::vector < std::vector <float> > beliefs;
+public:
+    std::vector<std::vector<char> > grid;
+    std::vector<std::vector<float> > beliefs;
 
-	float blur, p_hit, p_miss, incorrect_sense_prob;
+    float blur, p_hit, p_miss, incorrect_sense_prob;
 
-	int height, width, num_colors;
-	
-	std::vector<int> true_pose;
-	std::vector<int> prev_pose;
+    int height, width, num_colors;
 
-	std::vector <char> colors;
-	Simulation(std::vector < std::vector<char> >, float, float, std::vector <int>);
+    std::vector<int> true_pose;
+    std::vector<int> prev_pose;
+
+    std::vector<char> colors;
+
+    Simulation(std::vector<std::vector<char> >, float, float, std::vector<int>);
 
 };
 
