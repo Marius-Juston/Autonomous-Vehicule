@@ -82,9 +82,19 @@ vector<vector<float> > move(int dy, int dx,
                             vector<vector<float> > beliefs,
                             float blurring) {
 
-    vector<vector<float> > newGrid;
+    int rows = beliefs.size();
+    int cols = beliefs[0].size();
 
-    // your code here
+    vector<vector<float> > newGrid = zeros(rows, cols);
+
+    for (int r = 0; r < rows; ++r) {
+        for (int c = 0; c < cols; ++c) {
+            int newRow = (r + dy + rows) % rows;
+            int newCol = (c + dx + cols) % cols;
+
+            newGrid[newRow][newCol] = beliefs[r][c];
+        }
+    }
 
     return blur(newGrid, blurring);
 }
