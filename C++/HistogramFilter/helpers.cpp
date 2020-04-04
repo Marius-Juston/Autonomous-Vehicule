@@ -16,9 +16,7 @@
 using namespace std;
 
 /**
-	TODO - implement this function
-
-    Normalizes a grid of numbers. 
+    Normalizes a grid of numbers.
 
     @param grid - a two dimensional grid (vector of vectors of floats)
 		   where each entry represents the unnormalized probability 
@@ -48,9 +46,7 @@ vector<vector<float> > normalize(vector<vector<float> > grid) {
 }
 
 /**
-	TODO - implement this function.
-
-    Blurs (and normalizes) a grid of probabilities by spreading 
+    Blurs (and normalizes) a grid of probabilities by spreading
     probability from each cell over a 3x3 "window" of cells. This 
     function assumes a cyclic world where probability "spills 
     over" from the right edge to the left and bottom to top. 
@@ -195,7 +191,7 @@ vector<char> read_line(string s) {
 
     @return - A grid of chars representing a map.
 */
-vector<vector<char> > read_map(const string& file_name) {
+vector<vector<char> > read_map(const string &file_name) {
     ifstream infile(file_name);
     vector<vector<char> > map;
     if (infile.is_open()) {

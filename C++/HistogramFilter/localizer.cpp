@@ -16,9 +16,7 @@
 using namespace std;
 
 /**
-	TODO - implement this function 
-    
-    Initializes a grid of beliefs to a uniform distribution. 
+    Initializes a grid of beliefs to a uniform distribution.
 
     @param grid - a two dimensional grid map (vector of vectors 
     	   of chars) representing the robot's world. For example:
@@ -37,11 +35,10 @@ using namespace std;
            0.25 0.25
 */
 vector<vector<float> > initialize_beliefs(vector<vector<char> > grid) {
-    vector<vector<float> > newGrid;
+    int rows = grid.size();
+    int cols = grid[0].size();
 
-    // your code here
-
-    return newGrid;
+    return vector<vector<float>>(rows, vector<float>(cols, 1.0 / (rows * cols)));
 }
 
 /**
