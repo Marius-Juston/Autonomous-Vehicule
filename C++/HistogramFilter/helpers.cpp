@@ -158,10 +158,7 @@ bool close_enough(vector<vector<float> > g1, vector<vector<float> > g2) {
 }
 
 bool close_enough(float v1, float v2) {
-    if (abs(v2 - v1) > 0.0001) {
-        return false;
-    }
-    return true;
+    return abs(v2 - v1) <= 0.0001;
 }
 
 /**
@@ -198,12 +195,11 @@ vector<char> read_line(string s) {
 
     @return - A grid of chars representing a map.
 */
-vector<vector<char> > read_map(string file_name) {
+vector<vector<char> > read_map(const string& file_name) {
     ifstream infile(file_name);
     vector<vector<char> > map;
     if (infile.is_open()) {
 
-        char color;
         vector<char> row;
 
         string line;
