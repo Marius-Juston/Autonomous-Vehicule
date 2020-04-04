@@ -28,10 +28,21 @@ using namespace std;
     	   all probabilities is equal to one.
 */
 vector<vector<float> > normalize(vector<vector<float> > grid) {
+    float sum = 0;
 
-    vector<vector<float> > newGrid;
+    for (const vector<float> &row: grid) {
+        for (float i : row) {
+            sum += i;
+        }
+    }
 
-    // todo - your code here
+    vector<vector<float> > newGrid = zeros(grid.size(), grid[0].size());
+
+    for (int r = 0; r < newGrid.size(); ++r) {
+        for (int c = 0; c < newGrid[0].size(); ++c) {
+            newGrid[r][c] = grid[r][c] / sum;
+        }
+    }
 
     return newGrid;
 }
