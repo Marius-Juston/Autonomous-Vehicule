@@ -42,9 +42,7 @@ vector<vector<float> > initialize_beliefs(vector<vector<char> > grid) {
 }
 
 /**
-  TODO - implement this function 
-    
-    Implements robot motion by updating beliefs based on the 
+    Implements robot motion by updating beliefs based on the
     intended dx and dy of the robot. 
 
     For example, if a localized robot with the following beliefs
@@ -142,9 +140,17 @@ vector<vector<float> > sense(char color,
                              vector<vector<float> > beliefs,
                              float p_hit,
                              float p_miss) {
-    vector<vector<float> > newGrid;
+    int rows = grid.size();
+    int cols = grid[0].size();
 
-    // your code here
+    vector<vector<float> > newGrid = zeros(rows, cols);
+
+    for (int r = 0; r < rows; ++r) {
+        for (int c = 0; c < cols; ++c) {
+            bool b = grid[r][c] == color;
+            newGrid[r][c] = beliefs[r][c] * (b * p_hit + !b * p_miss);
+        }
+    }
 
     return normalize(newGrid);
 }
