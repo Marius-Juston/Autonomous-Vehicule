@@ -29,20 +29,16 @@ vector<vector<float> > blur(vector<vector<float> > &grid, float blurring) {
     vector<float>::size_type width = grid[0].size();
     vector<vector<float> > newGrid = zeros(height, width);
 
-    static vector<int> DX = {-1, 0, 1};
-    static vector<int> DY = {-1, 0, 1};
-
     int ii;
     int jj;
-    int i;
     int j;
 
-    for (i = 0; i < height; i++) {
+    for (int i = 0; i < height; i++) {
         for (j = 0; j < width; j++) {
-            for (ii = 0; ii < 3; ii++) {
-                for (jj = 0; jj < 3; jj++) {
-                    newGrid[(i + DY[ii] + height) % height][(j + DX[jj] + width) % width] +=
-                            grid[i][j] * window[ii][jj];
+            for (ii = -1; ii < 2; ii++) {
+                for (jj = -1; jj < 2; jj++) {
+                    newGrid[(i + jj + height) % height][(j + ii + width) % width] +=
+                            grid[i][j] * window[ii + 1][jj + 1];
                 }
             }
         }
