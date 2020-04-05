@@ -109,6 +109,10 @@ bool test_helpers() {
 bool test_initialize() {
     vector<vector<char> > map;
     map = read_map("maps/m1.txt");
+
+    if (map.empty())
+        map = read_map("C:/Users/mariu/Documents/GitHub/Autonomous Vehicule/C++/HistogramFilter/maps/m1.txt");
+    
     vector<vector<float> > beliefs, correct;
     beliefs = initialize_beliefs(map);
 
@@ -200,6 +204,9 @@ bool test_sense() {
     char color = 'r';
     vector<vector<char> > map;
     map = read_map("maps/half_red.txt");
+    if (map.empty())
+        map = read_map("C:/Users/mariu/Documents/GitHub/Autonomous Vehicule/C++/HistogramFilter/maps/half_red.txt");
+
     float p_hit, p_miss;
     p_hit = 2.0;
     p_miss = 1.0;
