@@ -32,10 +32,10 @@ vector<vector<float> > blur(vector<vector<float> > &grid, float blurring) {
     int jj;
     int j;
 
-    for (int i = 0; i < height; i++) {
-        for (j = 0; j < width; j++) {
-            for (ii = -1; ii < 2; ii++) {
-                for (jj = -1; jj < 2; jj++) {
+    for (int i = 0; i < height; ++i) {
+        for (j = 0; j < width; ++j) {
+            for (ii = -1; ii < 2; ++ii) {
+                for (jj = -1; jj < 2; ++jj) {
                     newGrid[(i + jj + height) % height][(j + ii + width) % width] +=
                             grid[i][j] * window[ii + 1][jj + 1];
                 }
