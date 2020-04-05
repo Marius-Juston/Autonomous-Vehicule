@@ -2,10 +2,8 @@
 
 using namespace std;
 
-// OPTIMIZATION: Pass variable by reference
 vector<vector<float> > normalize(vector<vector<float> > grid) {
 
-    // OPTIMIZATION: Avoid declaring and defining 				// intermediate variables that are not needed.
     float total = 0.0;
     int i;
     int j;
