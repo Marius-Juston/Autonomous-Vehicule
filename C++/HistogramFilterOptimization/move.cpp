@@ -5,10 +5,10 @@ using namespace std;
 
 // OPTIMIZATION: Pass large variable by reference
 vector<vector<float> > move(int dy, int dx,
-                            vector<vector<float> > beliefs) {
     int height, width;
     height = beliefs.size();
     width = beliefs[0].size();
+                            vector<vector<float> > &beliefs) {
 
     float belief;
     vector<vector<float> > newGrid;
