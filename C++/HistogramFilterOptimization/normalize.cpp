@@ -2,8 +2,7 @@
 
 using namespace std;
 
-vector<vector<float> > normalize(vector<vector<float> > grid) {
-
+vector<vector<float> > normalize(vector<vector<float> > &grid) {
     float total = 0.0;
     int i;
     int j;
