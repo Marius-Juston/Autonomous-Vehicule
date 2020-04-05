@@ -10,8 +10,9 @@ vector<vector<float> > move(int dy, int dx, vector<vector<float> > &beliefs) {
 
     unsigned int j;
     unsigned int i;
+    unsigned int total = height * width;
 
-    for (unsigned int k = 0; k < height * width; ++k) {
+    for (unsigned int k = 0; k < total; ++k) {
         i = k / width;
         j = k % width;
         newGrid[(i + dy + height) % height][(j + dx + width) % width] = beliefs[i][j];
