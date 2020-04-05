@@ -11,14 +11,10 @@ vector<vector<float> > blur(vector<vector<float> > &grid, float blurring) {
                                      {corner,   adjacent,        corner}};
 
 
-    unsigned int height = grid.size(), width = grid[0].size();
+    unsigned int height = grid.size(), width = grid[0].size(), ii, jj, i, j;
     vector<vector<float> > newGrid = zeros(height, width);
 
-    int ii;
-    int jj;
-    int j;
-
-    for (int i = 0; i < height; ++i) {
+    for (i = 0; i < height; ++i) {
         for (j = 0; j < width; ++j) {
             for (ii = -1; ii < 2; ++ii) {
                 for (jj = -1; jj < 2; ++jj) {

@@ -10,20 +10,15 @@ vector<vector<float> > normalize(vector<vector<float> > &grid) {
         }
     }
 
-    unsigned int i;
-    unsigned int j;
-    vector<float> newRow;
-    unsigned int height = grid.size(), width = grid[0].size();
+    unsigned int i, j, height = grid.size(), width = grid[0].size(), area = height * width, k;
 
-    vector<vector<float >> newGrid;
+    vector<vector<float >> newGrid(height, vector<float>(width));
 
-    for (i = 0; i < height; i++) {
-        newRow.clear();
-        for (j = 0; j < width; j++) {
-            float newProb = grid[i][j] / total;
-            newRow.push_back(newProb);
-        }
-        newGrid.push_back(newRow);
+    for (k = 0; k < area; ++k) {
+        i = k / width;
+        j = k % height;
+
+        newGrid[i][j] = grid[i][j] / total;
     }
 
     return newGrid;
