@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
+#include <string>
 
 // Normalizes a grid of numbers. 
 std::vector<std::vector<float> > normalize(std::vector<std::vector<float> > grid);

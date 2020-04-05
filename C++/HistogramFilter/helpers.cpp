@@ -78,7 +78,11 @@ vector<vector<float> > normalize(vector<vector<float> > grid) {
 */
 vector<vector<float> > blur(vector<vector<float> > grid, float blurring) {
     int rows = grid.size();
-    int cols = grid[0].size();
+    int cols = (rows == 0 || grid[0].empty()) ? 0 : grid[0].size();
+
+    if (rows == 0 || cols == 0) {
+        return zeros(rows, cols);
+    }
 
     float centerProb = 1.0f - blurring;
     float cornerProb = blurring / 12.0f;

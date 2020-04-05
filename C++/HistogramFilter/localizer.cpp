@@ -36,7 +36,7 @@ using namespace std;
 */
 vector<vector<float> > initialize_beliefs(vector<vector<char> > grid) {
     int rows = grid.size();
-    int cols = grid[0].size();
+    int cols = (rows == 0 || grid[0].empty()) ? 0 : grid[0].size();
 
     return vector<vector<float>>(rows, vector<float>(cols, 1.0 / (rows * cols)));
 }
