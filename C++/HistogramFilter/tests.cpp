@@ -112,7 +112,7 @@ bool test_initialize() {
 
     if (map.empty())
         map = read_map("C:/Users/mariu/Documents/GitHub/Autonomous Vehicule/C++/HistogramFilter/maps/m1.txt");
-    
+
     vector<vector<float> > beliefs, correct;
     beliefs = initialize_beliefs(map);
 
