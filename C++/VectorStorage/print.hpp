@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-void print(std::vector< std::vector<int> > matrix);
+void print(std::vector<std::vector<int> > matrix);
 
 #endif /* print_hpp */
 

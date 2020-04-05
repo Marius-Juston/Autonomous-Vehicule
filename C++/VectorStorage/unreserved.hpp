@@ -3,6 +3,6 @@
 
 #include <vector>
 
-std::vector< std::vector<int> > unreserved(int rows, int cols, int initial_value);
+std::vector<std::vector<int> > unreserved(int rows, int cols, int initial_value);
 
 #endif /* unreserved_hpp */

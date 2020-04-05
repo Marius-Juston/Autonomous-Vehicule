@@ -1,11 +1,12 @@
 #include "initialize_matrix.hpp"
 
 using namespace std;
-vector < vector<int> > initialize_matrix(int num_rows, int num_cols, int initial_value) {
-    
-    vector < vector<int> > matrix;
+
+vector<vector<int> > initialize_matrix(int num_rows, int num_cols, int initial_value) {
+
+    vector<vector<int> > matrix;
     vector<int> new_row;
-    
+
     for (int i = 0; i < num_rows; i++) {
         new_row.clear();
         for (int j = 0; j < num_cols; j++) {
