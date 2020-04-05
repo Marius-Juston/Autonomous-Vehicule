@@ -12,14 +12,12 @@ vector<vector<float> > normalize(vector<vector<float> > &grid) {
 
     unsigned int i, j, height = grid.size(), width = grid[0].size(), area = height * width, k;
 
-    vector<vector<float >> newGrid(height, vector<float>(width));
-
     for (k = 0; k < area; ++k) {
         i = k / width;
-        j = k % height;
+        j = k % width;
 
-        newGrid[i][j] = grid[i][j] / total;
+        grid[i][j] = grid[i][j] / total;
     }
 
-    return newGrid;
+    return grid;
 }
