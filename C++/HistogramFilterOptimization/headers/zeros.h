@@ -5,6 +5,6 @@
 #include <ctime>
 #include <vector>
 
-std::vector<std::vector<float> > zeros(int height, int width);
+std::vector<std::vector<float> > zeros(unsigned int height, unsigned int width);
 
 #endif /* ZEROS.H */

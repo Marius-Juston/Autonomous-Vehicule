@@ -25,8 +25,7 @@ vector<vector<float> > blur(vector<vector<float> > &grid, float blurring) {
                                      {corner,   adjacent,        corner}};
 
 
-    vector<float>::size_type height = grid.size();
-    vector<float>::size_type width = grid[0].size();
+    unsigned int height = grid.size(), width = grid[0].size();
     vector<vector<float> > newGrid = zeros(height, width);
 
     int ii;
