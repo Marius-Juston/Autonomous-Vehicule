@@ -144,6 +144,26 @@ def show_map(world_map: Map, start=None, goal=None, path=None, show_weight=True)
 
     output.append(edge_trace)
 
+    if path is not None:
+        xs = []
+        ys = []
+
+        for i in range(len(path) - 1):
+            x0, y0 = graph.nodes[path[i]]['pos']
+            x1, y1 = graph.nodes[path[i + 1]]['pos']
+            xs.extend((x0, x1, None))
+            ys.extend((y0, y1, None))
+
+        path_trace = Scatter(
+            x=xs,
+            y=ys,
+            line=Line(width=2, color='red'),
+            hoverinfo='none',
+            mode='lines',
+        )
+
+        output.append(path_trace)
+
     xs = []
     ys = []
 
