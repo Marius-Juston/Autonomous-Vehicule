@@ -111,9 +111,8 @@ class PathPlanner:
 
     def set_map(self, M):
         """Method used to set map attribute """
+        self.map = M
         self._reset()
-        self.start = None
-        self.goal = None
 
     def set_start(self, start):
         """Method used to set start attribute """
