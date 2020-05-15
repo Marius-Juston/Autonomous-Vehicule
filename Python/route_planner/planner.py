@@ -153,16 +153,8 @@ class PathPlanner():
 
     def get_gScore(self, node):
         """Returns the g Score of a node"""
-
-        if node not in self.gScore[node]:
-            #         node_before = self.cameFrom[node]
-            #         node_before = self.current_node
-            node_before = self.start
-
-            distance = self.distance(node, node_before)
-            gScore = distance + self.gScore[node_before]
-            self.gScore[node] = gScore
-            return gScore
+        if node not in self.gScore:
+            return float('infinity')
 
         return self.gScore[node]
         # TODO: Return the g Score of a node
