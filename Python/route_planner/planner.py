@@ -130,9 +130,7 @@ class PathPlanner:
 
     def get_current_node(self) -> int:
         """ Returns the node in the open set with the lowest value of f(node)."""
-        a = {node: self.fScore[node] for node in self.openSet}
-
-        return min(a, key=a.get)
+        return min(self.openSet, key=self.fScore.get)
 
     def get_neighbors(self, node) -> List[int]:
         """Returns the neighbors of a node"""
