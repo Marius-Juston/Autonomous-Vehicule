@@ -191,5 +191,5 @@ class PathPlanner():
         # TODO: Record the best path to a node, by updating cameFrom, gScore, and fScore
         print(current, neighbor)
         self.cameFrom[neighbor] = current
+        self.gScore[neighbor] = self.get_tentative_gScore(current, neighbor)
         self.fScore[neighbor] = self.calculate_fscore(neighbor)
-        self.gScore[neighbor] = self.get_gScore(neighbor)
