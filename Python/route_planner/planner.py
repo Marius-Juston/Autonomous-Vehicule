@@ -1,4 +1,3 @@
-import math
 from typing import List, Dict, Set
 
 
@@ -145,7 +144,7 @@ class PathPlanner:
         node_1 = self.map.intersections[node_1]
         node_2 = self.map.intersections[node_2]
 
-        return math.hypot((node_1[0] - node_2[0]), (node_1[1] - node_2[1]))
+        return ((node_1[0] - node_2[0]) ** 2 + (node_1[1] - node_2[1]) ** 2) ** 0.5
 
     def get_tentative_gScore(self, current, neighbor) -> float:
         """Returns the tentative g Score of a node"""
