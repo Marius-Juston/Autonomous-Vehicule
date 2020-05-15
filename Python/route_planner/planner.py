@@ -66,7 +66,7 @@ class PathPlanner:
                 if neighbor in self.closedSet:
                     continue  # Ignore the neighbor which is already evaluated.
 
-                if not neighbor in self.openSet:  # Discover a new node
+                if neighbor not in self.openSet:  # Discover a new node
                     self.openSet.add(neighbor)
 
                 if self.get_tentative_gScore(current, neighbor) >= self.get_gScore(neighbor):
