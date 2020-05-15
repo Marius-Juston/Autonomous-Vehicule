@@ -54,7 +54,6 @@ class PathPlanner():
 
         while not self.is_open_empty():
             current = self.get_current_node()
-            print(current)
 
             if current == self.goal:
                 self.path = [x for x in reversed(self.reconstruct_path(current))]
@@ -109,9 +108,6 @@ class PathPlanner():
     def create_gScore(self):
         """Creates and returns a data structure that holds the cost of getting from the start node to that node,
         for each node. The cost of going from start to start is zero."""
-        # TODO:  return a data structure that holds the cost of getting from the start node to that node, for each node.
-        # for each node. The cost of going from start to start is zero. The rest of the node's values should
-        # be set to infinity.
 
         out = {i: float('infinity') for i in self.map.intersections}
         out[self.start] = 0
@@ -122,11 +118,6 @@ class PathPlanner():
         """Creates and returns a data structure that holds the total cost of getting from the start node to the goal
         by passing by that node, for each node. That value is partly known, partly heuristic.
         For the first node, that value is completely heuristic."""
-        # TODO: return a data structure that holds the total cost of getting from the start node to the goal
-        # by passing by that node, for each node. That value is partly known, partly heuristic.
-        # For the first node, that value is completely heuristic. The rest of the node's value should be
-        # set to infinity.
-
         out = {i: float('infinity') for i in self.map.intersections}
         out[self.start] = self.distance(self.start, self.goal)
 
@@ -163,7 +154,6 @@ class PathPlanner():
 
     def get_neighbors(self, node):
         """Returns the neighbors of a node"""
-        # TODO: Return the neighbors of a node
         return self.map.roads[node]
 
     def get_gScore(self, node):
