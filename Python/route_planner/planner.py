@@ -109,19 +109,14 @@ class PathPlanner():
         """Creates and returns a data structure that holds the cost of getting from the start node to that node,
         for each node. The cost of going from start to start is zero."""
 
-        out = {i: float('infinity') for i in self.map.intersections}
-        out[self.start] = 0
-
-        return out
+        return {self.start: 0}
 
     def create_fScore(self):
         """Creates and returns a data structure that holds the total cost of getting from the start node to the goal
         by passing by that node, for each node. That value is partly known, partly heuristic.
         For the first node, that value is completely heuristic."""
-        out = {i: float('infinity') for i in self.map.intersections}
-        out[self.start] = self.distance(self.start, self.goal)
 
-        return out
+        return {self.start: self.distance(self.start, self.goal)}
 
     def set_map(self, M):
         """Method used to set map attribute """
@@ -159,7 +154,7 @@ class PathPlanner():
     def get_gScore(self, node):
         """Returns the g Score of a node"""
 
-        if self.gScore[node] == float('infinity'):
+        if node not in self.gScore[node]:
             #         node_before = self.cameFrom[node]
             #         node_before = self.current_node
             node_before = self.start
