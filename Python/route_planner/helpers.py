@@ -1,3 +1,4 @@
+import math
 import pickle
 
 import networkx as nx
@@ -97,11 +98,17 @@ def load_map_40():
     return Map(graph)
 
 
-def show_map(world_map: Map, start=None, goal=None, path=None):
+def show_map(world_map: Map, start=None, goal=None, path=None, show_weight=True):
     graph: Graph = world_map.get_graph()
+
+    output = []
 
     xs = []
     ys = []
+
+    middle_xs = []
+    middle_ys = []
+    distances = []
 
     for edge in graph.edges():
         x0, y0 = graph.nodes[edge[0]]['pos']
@@ -109,12 +116,33 @@ def show_map(world_map: Map, start=None, goal=None, path=None):
         xs.extend((x0, x1, None))
         ys.extend((y0, y1, None))
 
+        if show_weight:
+            distances.append(math.hypot(x0 - x1, y0 - y1))
+            middle_xs.append((x0 + x1) / 2)
+            middle_ys.append((y0 + y1) / 2)
+
+    if show_weight:
+        middle_node_trace = Scatter(
+            x=middle_xs,
+            y=middle_ys,
+            text=distances,
+            mode='markers',
+            hoverinfo='text',
+            marker=Marker(
+                opacity=0
+            )
+        )
+
+        output.append(middle_node_trace)
+
     edge_trace = Scatter(
         x=xs,
         y=ys,
         line=Line(width=0.5, color='#888'),
         hoverinfo='none',
         mode='lines')
+
+    output.append(edge_trace)
 
     xs = []
     ys = []
@@ -163,7 +191,9 @@ def show_map(world_map: Map, start=None, goal=None, path=None):
             ),
             line=dict(width=2)))
 
-    fig = Figure(data=(edge_trace, node_trace),
+    output.append(node_trace)
+
+    fig = Figure(data=output,
                  layout=Layout(
                      title='<br>Network graph made with Python',
                      titlefont=dict(size=16),
