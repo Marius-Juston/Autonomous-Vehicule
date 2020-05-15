@@ -14,9 +14,6 @@ if __name__ == '__main__':
 
     planner = PathPlanner(map_40, 5, 34)
     path = planner.path
-    print(planner.cameFrom)
-    print(planner.gScore)
-    print(planner.fScore)
     if path == [5, 16, 37, 12, 34]:
         print("great! Your code works for these inputs!")
     else:
