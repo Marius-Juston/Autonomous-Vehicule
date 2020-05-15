@@ -140,10 +140,7 @@ class PathPlanner:
 
     def get_gScore(self, node) -> float:
         """Returns the g Score of a node"""
-        if node not in self.gScore:
-            return float('infinity')
-
-        return self.gScore[node]
+        return self.gScore.get(node, float('infinity'))
 
     def distance(self, node_1, node_2) -> float:
         """ Computes the Euclidean L2 Distance"""
