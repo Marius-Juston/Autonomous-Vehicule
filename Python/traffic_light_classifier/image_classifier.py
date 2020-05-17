@@ -40,6 +40,8 @@ def get_histogram_distribution(images):
     plt.plot(sum_c / l, color='b')
 
     plt.show()
+def get_data(data, category, label, categories):
+    return data[np.all(label == categories[category], axis=1)]
 
 
 if __name__ == '__main__':
