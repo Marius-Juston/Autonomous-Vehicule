@@ -83,4 +83,43 @@ if __name__ == '__main__':
     }
     print(categories)
 
-    get_histogram_distribution(X[np.all(Y == categories['red'], axis=1)])
+    h = []
+    s = []
+    v = []
+
+    for i in get_data(X, 'green', Y, categories):
+        i_m = cv2.cvtColor(i, cv2.COLOR_RGB2HSV)
+
+        mask = cv2.inRange(i_m, (0, 90, 90), (256, 256, 256)) != 0
+
+        if np.all(np.bitwise_not(mask)):
+            print("Hello")
+            # plt.imshow(i)
+            # plt.show()
+            continue
+
+        # h.append(i_m[mask, 0].mean())
+        # s.append(i_m[mask, 2].mean())
+        # v.append(i_m[mask, 2].mean())
+        s.append(np.where(mask != 0)[1].mean())
+    for i in get_data(X, 'red', Y, categories):
+        i_m = cv2.cvtColor(i, cv2.COLOR_RGB2HSV)
+
+        mask = cv2.inRange(i_m, (0, 90, 90), (256, 256, 256)) != 0
+
+        if np.all(np.bitwise_not(mask)):
+            print("Hello")
+            # plt.imshow(i)
+            # plt.show()
+            continue
+
+        # h.append(i_m[mask, 0].mean())
+        # s.append(i_m[mask, 2].mean())
+        # v.append(i_m[mask, 2].mean())
+        h.append(np.where(mask != 0)[1].mean())
+    plt.subplots()
+    plt.hist(h)
+    plt.hist(s)
+    # plt.hist(v)
+
+    plt.show()
