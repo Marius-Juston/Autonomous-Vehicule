@@ -1,4 +1,5 @@
 import cv2
+import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 
@@ -31,7 +32,6 @@ def resize_images(images, width=34, height=64):
 
 
 X = resize_images(X, image_width, image_height)
-import matplotlib.pyplot as plt
 
 plt.imshow(X[0])
 
