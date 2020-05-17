@@ -17,7 +17,7 @@ def resize_images(images, width=34, height=64):
     return np.stack([cv2.resize(image, (width, height)) for image in images])
 
 
-def get_histogram_distribution(images):
+def get_histogram_distribution(images, ax=None):
     sum_a = np.zeros((256, 256))
     sum_b = np.zeros((256, 256))
     sum_c = np.zeros((256, 256))
@@ -25,21 +25,28 @@ def get_histogram_distribution(images):
     for image in images:
         transformed_images = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
 
-        a = cv2.calcHist(transformed_images, [0], None, [256], [0, 256])
+        # a = cv2.calcHist(transformed_images, [0], None, [256], [0, 256])
         b = cv2.calcHist(transformed_images, [1], None, [256], [0, 256])
         c = cv2.calcHist(transformed_images, [2], None, [256], [0, 256])
 
-        sum_a += a
+        # sum_a += a
         sum_b += b
         sum_c += c
 
-    l = images.shape[0]
+    l = len(images)
 
-    plt.plot(sum_a / l, color='r')
-    plt.plot(sum_b / l, color='g')
-    plt.plot(sum_c / l, color='b')
+    if ax is None:
+        plt.plot(sum_a / l, color='r')
+        plt.plot(sum_b / l, color='g')
+        plt.plot(sum_c / l, color='b')
 
-    plt.show()
+        plt.show()
+    else:
+        ax.plot(sum_a / l, color='r')
+        ax.plot(sum_b / l, color='g')
+        ax.plot(sum_c / l, color='b')
+
+
 def get_data(data, category, label, categories):
     return data[np.all(label == categories[category], axis=1)]
 
