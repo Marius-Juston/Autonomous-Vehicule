@@ -9,7 +9,7 @@ load = load_dataset(image_dir)
 image_dir = './traffic_light_images/test'
 load.extend(load_dataset(image_dir))
 
-X = np.array([i[0] for i in load])
+X = [i[0] for i in load]
 Y = np.array([i[1] for i in load])
 
 
@@ -27,7 +27,7 @@ image_height = int(round(height, 0))
 
 
 def resize_images(images, width=34, height=64):
-    return [cv2.resize(image, (width, height)) for image in images]
+    return np.stack([cv2.resize(image, (width, height)) for image in images])
 
 
 X = resize_images(X, image_width, image_height)
